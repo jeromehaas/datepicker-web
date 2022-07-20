@@ -16,11 +16,11 @@ const notifier = require('gulp-notifier');
 // SOURCE PATHS
 const filePaths = {
 	scss: {
-		src: ['./src/scss/reset.scss', './src/scss/variables.scss', './src/scss/calendar.scss'],
+		src: ['./src/scss/reset.scss', './src/scss/variables.scss', './src/scss/fonts.scss', './src/scss/global.scss', './src/scss/icon.scss', './src/scss/datepicker.scss' ],
 		dist: './css'
 	},
 	js: {
-		src: ['./src/js/calendar.js'],
+		src: ['./src/js/datepicker.js'],
 		dist: './js'
 	},
 };

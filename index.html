@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./css/main.min.css">
-	<title>Document</title>
-</head>
-<body>
-	<section class="page-wrapper">
-		
-		<main class="calendar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.min.css" />
+    <link rel="icon" href="./assets/favicons/favicon.png" />
+    <title>Datepicker</title>
+  </head>
+  <body>
+    <div class="page-wrapper">
 
-			<div class="calendar__header header">
-				<div class="header__arrow arrow--previous"><</div>
-				<div class="header__date date">
-					<p class="date__month"></p>
-					<p class="date__year"></p>
+      <section class="datepicker">
+
+				<div class="datepicker__input input">
+					<input type="text" class="input__input" value="" placeholder="Choose some dates" disabled>
+					<div class="input__handle">
+						<i class="icon icon--calendar icon--medium"></i>
+					</div>
 				</div>
-				<div class="header__arrow arrow--next">></div>
-			</div>
-			<div class="calendar__weekdays weekdays">
-				<p class="weekdays__item">M</p>
-				<p class="weekdays__item">D</p>
-				<p class="weekdays__item">M</p>
-				<p class="weekdays__item">D</p>
-				<p class="weekdays__item">F</p>
-				<p class="weekdays__item">S</p>
-				<p class="weekdays__item">S</p>
-			</div>
-			<div class="calendar__dates dates">
-			</div>
-
-		</main>
-
-		</section>
-		<script src="./js/main.build.js"></script>
-</body>
+   
+				<div class="datepicker__calendar calendar">
+          <div class="calendar__header header">
+						<i class="header__arrow arrow--previous icon icon--arrow-left icon--extralarge"></i>
+            <div class="header__date date">
+              <p class="date__month"></p>
+              <p class="date__year"></p>
+            </div>
+						<i class="header__arrow arrow--next icon icon--arrow-right icon--extralarge"></i>
+          </div>
+          <div class="calendar__weekdays weekdays">
+            <p class="weekdays__item">M</p>
+            <p class="weekdays__item">D</p>
+            <p class="weekdays__item">M</p>
+            <p class="weekdays__item">D</p>
+            <p class="weekdays__item">F</p>
+            <p class="weekdays__item">S</p>
+            <p class="weekdays__item">S</p>
+          </div>
+          <div class="calendar__dates dates"></div>
+        </div>
+      </section>
+    </div>
+    <script src="./js/main.build.js"></script>
+  </body>
 </html>

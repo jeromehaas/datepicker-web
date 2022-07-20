@@ -1,0 +1,36 @@
+
+.icon {
+  display: inline-block;
+  font: normal normal normal 32px "Icon";
+  color: inherit;
+  flex-shrink: 0;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon--small {
+  font-size: 12px;
+}
+.icon--medium {
+  font-size: 16px;
+}
+.icon--large {
+  font-size: 20px;
+}
+
+.icon--big {
+  font-size: 32px;
+}
+
+.icon--calendar::before {
+  content: "\ea02";
+}
+
+.icon--arrow-right::before {
+	content: "\ea03";
+}
+
+.icon--arrow-left::before {
+  content: "\ea04";
+}

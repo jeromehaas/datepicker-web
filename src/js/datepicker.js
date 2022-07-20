@@ -4,7 +4,7 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 
-class DatePicker {
+class Datepicker {
 
 	constructor() {
 	
@@ -17,6 +17,7 @@ class DatePicker {
 		};
 
 		this.today = dayjs();
+
 		this.choosenDates = [];
 		
 		this.labels = {
@@ -26,6 +27,7 @@ class DatePicker {
 		
 		
 		this.elements = {
+			calendar: document.querySelector('.calendar'),
 			dates: {
 				container: document.querySelector('.calendar__dates'),
 				items: null,
@@ -38,6 +40,10 @@ class DatePicker {
 					next: document.querySelector('.calendar__header .arrow--next'),
 				},
 			},
+			input: {
+				handle: document.querySelector('.input__handle'),
+				input: document.querySelector('.input__input'),
+			}
 		};
 
 	};
@@ -60,7 +66,6 @@ class DatePicker {
 				const updatedDate = dayjs(`${this.selected.year}-${this.selected.month}-01`).subtract(1, 'month');
 				this.selected.month = dayjs(updatedDate).format("M");
 				this.selected.year = dayjs(updatedDate).format("YYYY");
-				console.log('previus')
 				this.printCalendar();
 				break;
 			}
@@ -85,14 +90,25 @@ class DatePicker {
 	addEventListeners = () => {
 		this.elements.header.arrows.previous.addEventListener('click', () => this.updateCurrentMonth('previous'));
 		this.elements.header.arrows.next.addEventListener('click', () => this.updateCurrentMonth('next'));
+		this.elements.input.handle.addEventListener('click', this.toggleCalendar);
 	};
 
 	chooseDate = () => {
 		const element = event.target;
 		const date = event.target.getAttribute('data-date');
-		element.classList.add('dates__item--choosen');
-		this.choosenDates.push(date);
+		element.classList.contains('dates__item--choosen') ? element.classList.remove('dates__item--choosen') : element.classList.add('dates__item--choosen');
+		this.choosenDates.includes(date) ? this.choosenDates = this.choosenDates.filter((item) =>  item !== date) : this.choosenDates.push(date);
+		this.updateInput();
+	};
+
+	updateInput = () => {
+		this.elements.input.input.value = "";
+		this.choosenDates.forEach((item) => this.elements.input.input.value += `${item} / `)
 	}
+
+	toggleCalendar = () => {
+		this.elements.calendar.classList.contains('calendar--active') ? this.elements.calendar.classList.remove('calendar--active') : this.elements.calendar.classList.add('calendar--active');
+	};
 
 	getFirstDayOfSelectedMonthWeekday = () => {
 		return dayjs(`${this.selected.year}-${this.selected.month}-01`).weekday();
@@ -129,8 +145,6 @@ class DatePicker {
 				if (item.date !== null) dateItem.innerText = item.dayOfMonth;
 				if (item.date !== null) dateItem.setAttribute('data-date', item.date);
 				if (item.date !== null && daysBetweenTodayAndDate <= 0) dateItem.addEventListener('click', this.chooseDate);
-				console.log(this.choosenDates);
-				console.log(item.date);
 				if (this.choosenDates.includes(item.date) 
 				) dateItem.classList.add('dates__item--choosen');
 			this.elements.dates.container.appendChild(dateItem);
@@ -144,4 +158,4 @@ class DatePicker {
 
 };
 
-new DatePicker().init();
+new Datepicker().init();
